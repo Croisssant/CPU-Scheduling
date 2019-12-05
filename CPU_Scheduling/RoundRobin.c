@@ -38,6 +38,8 @@ void RR(int bt[], int at[], int n, int time_quantum){
     count=0; 
   } 
   printf("\nAverage Waiting Time= %f\n",wait_time*1.0/n); 
-  printf("Avg Turnaround Time = %f",turnaround_time*1.0/n); 
+  printf("Average Turnaround Time = %f\n",turnaround_time*1.0/n);
+  float throughput = (float)n/(float)time;
+	printf("Throughput = %f", throughput);
 
 }
