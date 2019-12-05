@@ -1,5 +1,6 @@
 #include<stdio.h> 
 #include"FCFS.c"
+#include"RoundRobin.c"
 
 int main() 
 { 
@@ -13,7 +14,7 @@ int main()
 	// Arrival Time 
 	int at[] = {0, 1, 2};
 	
-	int choice;
+	int choice, time_quantum;
 	printf("Select the CPU Scheduling Algorithm you desire:\n");
 	printf("1: First Come First Serve\n");
 	printf("2: Round Robin\n");
@@ -28,7 +29,10 @@ int main()
 			break;
 		
 		case 2:
-			printf("RR");
+			printf("Please insert the Time Quantum\n");
+			printf(">> ");
+			scanf("%d", &time_quantum);
+			RR(burst_time, at, n, time_quantum);
 			break;
 		
 		case 3:
