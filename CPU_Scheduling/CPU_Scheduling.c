@@ -9,7 +9,9 @@ int main()
 	int n = sizeof processes / sizeof processes[0]; 
 	
 	// burst time of all processes 
-	int burstTime[] = {2, 5, 6};
+	int burstTime1[] = {2, 5, 6};
+	int burstTime2[] = {3, 7, 9};
+	int idleBurstTime[] = {};
 
 	// arrival Time 
 	int arrivalTime[] = {0, 1, 2};
@@ -25,14 +27,14 @@ int main()
 	
 	switch (choice){
 		case 1:
-			FCFS(processes, n, burstTime, arrivalTime); 
+			FCFS(processes, n, burstTime1, arrivalTime); 
 			break;
 		
 		case 2:
 			printf("Please insert the Time Quantum\n");
 			printf(">> ");
 			scanf("%d", &timeQuantum);
-			RR(burstTime, arrivalTime, n, timeQuantum);
+			RR(burstTime1, arrivalTime, n, timeQuantum);
 			break;
 		
 		case 3:

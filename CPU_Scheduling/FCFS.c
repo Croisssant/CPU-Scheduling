@@ -20,14 +20,14 @@ void findWaitingTime(int processes[], int n, int bt[], int wt[], int at[])
 // calculate turn around time 
 void findTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[]) 
 { 
-	// calculating turnaround time by adding 
+	// calculate turnaround time by adding 
 	// bt[i] + wt[i] 
-	for (int i=0; i<n ;i++) 
+	for (int i=0; i<n; i++) 
 		tat[i] = bt[i] + wt[i]; 
 } 
 	
 // calculate average time 
-void FCFS( int processes[], int n, int bt[], int at[]) 
+void FCFS(int processes[], int n, int bt[], int at[]) 
 { 
 	int wt[n], tat[n], total_wt = 0, total_tat = 0, total_bt = 0; 
 
@@ -43,23 +43,23 @@ void FCFS( int processes[], int n, int bt[], int at[])
 	// calculate total waiting time and total turn around time 
 	for (int i=0; i<n; i++) 
 	{ 
-		total_wt = total_wt + wt[i]; 
-		total_tat = total_tat + tat[i];
+		total_wt += wt[i]; 
+		total_tat += tat[i];
 		total_bt += bt[i]; 
 		printf(" %d\t",(i+1)); 
-		printf("	 %d\t\t", bt[i] ); 
-		printf("     %d\t",at[i]);
-		printf("	 %d\t",wt[i] );
-		printf("	 %d\n",tat[i] );	
+		printf("	%d\t\t", bt[i]); 
+		printf("%d\t",at[i]);
+		printf("	%d\t",wt[i]);
+		printf("	 %d\n",tat[i]);	
 	} 
-	int s=(float)total_wt / (float)n; 
-	int t=(float)total_tat / (float)n; 
-	printf("Average waiting time = %d",s); 
-	printf("\n"); 
-	printf("Average turn around time = %d ",t);
-	printf("\n");
-	// don't change position of Throughput
-	// throughtput = no. of jobs / final complete time
-	float throughput = (float)n/(float)total_bt;
+
+	int s = (float)total_wt / (float)n; 
+	int t = (float)total_tat / (float)n; 
+	printf("Average waiting time = %d\n", s); 
+	printf("Average turn around time = %d\n", t);
+
+	// don't change position of throughput
+	// throughtput = number of jobs / final complete time
+	float throughput = (float)n / (float)total_bt;
 	printf("Throughput = %f", throughput);
 } 
