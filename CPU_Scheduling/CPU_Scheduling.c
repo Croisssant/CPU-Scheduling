@@ -4,17 +4,17 @@
 
 int main() 
 { 
-	//Define No of Processes
-	int processes[] = { 1, 2, 3}; 
+	// define number of processes
+	int processes[] = {1, 2, 3}; 
 	int n = sizeof processes / sizeof processes[0]; 
 	
-	//Burst time of all processes 
-	int burst_time[] = {2, 5, 6,};
+	// burst time of all processes 
+	int burstTime[] = {2, 5, 6};
 
-	// Arrival Time 
-	int at[] = {0, 1, 2};
+	// arrival Time 
+	int arrivalTime[] = {0, 1, 2};
 	
-	int choice, time_quantum;
+	int choice, timeQuantum;
 	printf("Select the CPU Scheduling Algorithm you desire:\n");
 	printf("1: First Come First Serve\n");
 	printf("2: Round Robin\n");
@@ -25,14 +25,14 @@ int main()
 	
 	switch (choice){
 		case 1:
-			FCFS(processes, n, burst_time, at); 
+			FCFS(processes, n, burstTime, arrivalTime); 
 			break;
 		
 		case 2:
 			printf("Please insert the Time Quantum\n");
 			printf(">> ");
-			scanf("%d", &time_quantum);
-			RR(burst_time, at, n, time_quantum);
+			scanf("%d", &timeQuantum);
+			RR(burstTime, arrivalTime, n, timeQuantum);
 			break;
 		
 		case 3:
@@ -43,7 +43,5 @@ int main()
 			printf("Something is wrong");
 			break;
 	}
-	
 	return 0; 
-
 } 

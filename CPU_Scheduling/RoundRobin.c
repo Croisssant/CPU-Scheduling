@@ -1,6 +1,7 @@
-#include<stdio.h> 
+#include<stdio.h>
+
 void RR(int bt[], int at[], int n, int time_quantum){
-  int wait_time=0,turnaround_time=0,rt[n]; 
+  int rt[n],wait_time=0,turnaround_time=0; 
   int j,time,remain,flag=0; 
   int count;
   remain=n;
@@ -22,7 +23,7 @@ void RR(int bt[], int at[], int n, int time_quantum){
       rt[count]-=time_quantum; 
       time+=time_quantum; 
     } 
-    if(rt[count]==0 && flag==1) 
+    else if(rt[count]==0 && flag==1) 
     { 
       remain--; 
       printf("%d\t\t%d\t\t%d\n",count+1,time-at[count]-bt[count],time-at[count]); 
@@ -30,7 +31,7 @@ void RR(int bt[], int at[], int n, int time_quantum){
       turnaround_time+=time-at[count]; 
       flag=0; 
     } 
-    if(count==n-1) 
+    else if(count==n-1) 
     count=0; 
     else if(at[count+1]<=time) 
     count++; 
@@ -41,5 +42,4 @@ void RR(int bt[], int at[], int n, int time_quantum){
   printf("Average Turnaround Time = %f\n",turnaround_time*1.0/n);
   float throughput = (float)n/(float)time;
 	printf("Throughput = %f", throughput);
-
 }
