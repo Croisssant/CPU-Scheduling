@@ -6,14 +6,14 @@
 int main() 
 { 
 	// define number of processes
-	int processes[] = {1, 2, 3}; 
+	int processes[] = {1, 2, 3, 4, 5}; 
 	int n = sizeof processes / sizeof processes[0]; 
 	
 	// burst time of all processes 
-	int burstTime[] = {10, 18, 40};
+	int burstTime[] = {4, 13, 20, 29, 42};
 
 	// arrival Time 
-	int arrivalTime[] = {0, 2, 4};
+	int arrivalTime[] = {0, 0, 0, 0, 0};
 	
 	int choice, timeQuantum;
 	printf("Select the CPU Scheduling Algorithm you desire:\n");
@@ -33,7 +33,7 @@ int main()
 			printf("Please insert the Time Quantum\n");
 			printf(">> ");
 			scanf("%d", &timeQuantum);
-			RR(burstTime, arrivalTime, n, timeQuantum);
+			RR(n, burstTime, arrivalTime,timeQuantum);
 			break;
 		
 		case 3:
