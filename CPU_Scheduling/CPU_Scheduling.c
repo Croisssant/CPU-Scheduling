@@ -1,6 +1,7 @@
 #include<stdio.h> 
 #include"FCFS.c"
 #include"RoundRobin.c"
+#include "MLFQ.c"
 
 int main() 
 { 
@@ -9,12 +10,10 @@ int main()
 	int n = sizeof processes / sizeof processes[0]; 
 	
 	// burst time of all processes 
-	int burstTime1[] = {2, 5, 6};
-	int burstTime2[] = {3, 7, 9};
-	int idleBurstTime[] = {};
+	int burstTime[] = {10, 18, 40};
 
 	// arrival Time 
-	int arrivalTime[] = {0, 1, 2};
+	int arrivalTime[] = {0, 2, 4};
 	
 	int choice, timeQuantum;
 	printf("Select the CPU Scheduling Algorithm you desire:\n");
@@ -27,18 +26,21 @@ int main()
 	
 	switch (choice){
 		case 1:
-			FCFS(processes, n, burstTime1, arrivalTime); 
+			FCFS(processes, n, burstTime, arrivalTime); 
 			break;
 		
 		case 2:
 			printf("Please insert the Time Quantum\n");
 			printf(">> ");
 			scanf("%d", &timeQuantum);
-			RR(burstTime1, arrivalTime, n, timeQuantum);
+			RR(burstTime, arrivalTime, n, timeQuantum);
 			break;
 		
 		case 3:
-			printf("MLFQ");
+			printf("Please insert the Time Quantum\n");
+			printf(">> ");
+			scanf("%d", &timeQuantum);
+			MLFQ(arrivalTime, burstTime, n, timeQuantum);
 			break;
 
 		default:
