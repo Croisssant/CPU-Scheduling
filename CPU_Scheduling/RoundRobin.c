@@ -1,48 +1,83 @@
-// implementation for RR
+#include<stdio.h> 
+  
+// Function to find the waiting time for all 
+// processes 
+void RR_WT(int n, int bt[], int wt[], int at[], int quantum) 
+{ 
+  int i,time, rem_bt[n], flag=0;
+  int remain = n;
 
-#include<stdio.h>
-
-void RR(int bt[], int at[], int n, int time_quantum){
-  int rt[n],wait_time=0,turnaround_time=0; 
-  int j,time,remain,flag=0; 
-  int count;
-  remain = n;
-  for(int i=0; i<=n; i++){
-    rt[i] = bt[i];
+    // Make a copy of burst times bt[] to store remaining 
+    // burst times. 
+  for(i = 0; i < n; i++)
+  {
+    rem_bt[i] = bt[i];
   }
 
-  printf("\nProcess\t\tWaiting Time\tTurnaround Time\n"); 
-
-  for(time=0,count=0; remain!=0;) 
+  for(time=0,i=0;remain!=0;) 
   { 
-    if(rt[count]<=time_quantum && rt[count]>0) 
+    if(rem_bt[i] <= quantum && rem_bt[i]>0) 
     { 
-      time += rt[count]; 
-      rt[count] = 0; 
-      flag = 1; // 1 means process completed
+      time += rem_bt[i]; 
+      rem_bt[i]=0; 
+      flag=1; 
     } 
-    else if(rt[count]>0) 
+    else if(rem_bt[i]>0) 
     { 
-      rt[count] -= time_quantum; 
-      time += time_quantum; 
+      rem_bt[i] -= quantum; 
+      time += quantum; 
     } 
-    else if(rt[count] == 0 && flag == 1) 
+    if(rem_bt[i]==0 && flag==1) 
     { 
       remain--; 
-      printf("%d\t\t%d\t\t%d\n",count+1,time-at[count]-bt[count],time-at[count]); 
-      wait_time += time-at[count]-bt[count]; 
-      turnaround_time += time-at[count]; 
-      flag = 0; 
+      wt[i] = time - at[i] - bt[i];
+      flag=0; 
     } 
-    else if(count == n-1) 
-      count = 0; 
-    else if(at[count+1]<=time) 
-      count++; 
+    if(i == n-1) 
+      i = 0; 
+    else if(at[i+1] <= time) 
+      i++; 
     else 
-      count = 0; 
-  } 
-  printf("\nAverage Waiting Time= %f\n",wait_time*1.0/n); 
-  printf("Average Turnaround Time = %f\n",turnaround_time*1.0/n);
-  float throughput = (float)n/(float)time;
-	printf("Throughput = %f", throughput);
+      i=0; 
+  }
 }
+  
+// Function to calculate turn around time 
+void RR_TAT(int n, int bt[], int wt[], int tat[]) 
+{ 
+    // calculating turnaround time by adding 
+    // bt[i] + wt[i] 
+    for (int i = 0; i < n ; i++) 
+        tat[i] = bt[i] + wt[i]; 
+} 
+
+// Function to calculate average time 
+void RR(int n, int bt[], int at[], int quantum) 
+{ 
+  int wt[n], tat[n];
+  int total_wt = 0, total_tat = 0; 
+
+  // Function to find waiting time of all processes 
+  RR_WT(n, bt, wt, at, quantum); 
+
+  // Function to find turn around time for all processes 
+  RR_TAT(n, bt, wt, tat); 
+
+  // Display processes along with all details 
+  printf("\n");
+	printf("Processes\tBurst time\tArrival Time\tWaiting time\tTurn around time\n"); 
+
+  // Calculate total waiting time and total turn around time 
+  float total_bt = 0;
+  for(int i=0;i<n;i++)
+	{
+    total_bt += bt[i];
+    total_wt = total_wt + wt[i]; 
+    total_tat = total_tat + tat[i]; 
+		printf("P%d\t\t %d\t\t %d\t\t %d\t\t %d\n",i+1, bt[i], at[i], wt[i], tat[i]);
+	}
+    printf("Average waiting time = %.2f\n",(float)total_wt / (float)n); 
+    printf("Average turn around time = %.2f\n",(float)total_tat / (float)n);
+    float throughput = (float)n / (float)total_bt;
+    printf("Throughput = %f", throughput);
+} 
