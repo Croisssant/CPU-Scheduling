@@ -69,7 +69,7 @@ int MLFQ(int at[], int bt[], int n, int timeQuantum)
         }
         else /*process moves to FCFS queue*/
         {
-            Q2[0].AT = time;
+            Q2[k].AT = Q1[i].AT;
             time += timeQuantum;
             Q1[i].RT -= timeQuantum;
             Q2[k].BT = Q1[i].RT;
@@ -101,7 +101,7 @@ int MLFQ(int at[], int bt[], int n, int timeQuantum)
 
     for(i=0;i<k;i++)
     {
-        Q2[i].TAT = Q2[i].CT;
+        Q2[i].TAT = Q2[i].CT - Q2[i].AT;
         Q2[i].WT = Q2[i].TAT-Q2[i].BT-timeQuantum;
         total_wt += Q2[i].WT;
         total_tat += Q2[i].TAT;
