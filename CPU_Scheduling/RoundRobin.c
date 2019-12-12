@@ -1,14 +1,14 @@
+// Implementation for RoundRobin Scheduling
+
 #include<stdio.h> 
   
-// Function to find the waiting time for all 
-// processes 
+// function to find the waiting time for all processes 
 void RR_WT(int n, int bt[], int wt[], int at[], int quantum) 
 { 
   int i,time, rem_bt[n], flag=0;
   int remain = n;
 
-    // Make a copy of burst times bt[] to store remaining 
-    // burst times. 
+    // make a copy of burst times bt[] to store remaining burst times. 
   for(i = 0; i < n; i++)
   {
     rem_bt[i] = bt[i];
@@ -42,7 +42,7 @@ void RR_WT(int n, int bt[], int wt[], int at[], int quantum)
   }
 }
   
-// Function to calculate turn around time 
+// function to calculate turn around time 
 void RR_TAT(int n, int bt[], int wt[], int tat[]) 
 { 
     // calculating turnaround time by adding 
@@ -51,23 +51,23 @@ void RR_TAT(int n, int bt[], int wt[], int tat[])
         tat[i] = bt[i] + wt[i]; 
 } 
 
-// Function to calculate average time 
+// function to calculate average time 
 void RR(int n, int bt[], int at[], int quantum) 
 { 
   int wt[n], tat[n];
   int total_wt = 0, total_tat = 0; 
 
-  // Function to find waiting time of all processes 
+  // function to find waiting time of all processes 
   RR_WT(n, bt, wt, at, quantum); 
 
-  // Function to find turn around time for all processes 
+  // function to find turn around time for all processes 
   RR_TAT(n, bt, wt, tat); 
 
-  // Display processes along with all details 
+  // display processes along with all details 
   printf("\n");
 	printf("Processes\tBurst time\tArrival Time\tWaiting time\tTurn around time\n"); 
 
-  // Calculate total waiting time and total turn around time 
+  // calculate total waiting time and total turn around time 
   float total_bt = 0;
   for(int i=0;i<n;i++)
 	{
