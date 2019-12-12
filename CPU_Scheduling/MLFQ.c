@@ -110,5 +110,5 @@ int MLFQ(int at[], int bt[], int n, int timeQuantum)
 
     printf("\n\nAverage Waiting Time = %f", total_wt/(float)n);
     printf("\nAverage Turn Around Time = %f", total_tat/(float)n);
-    printf("\nThroughput = %f", n/total_bt);
+    printf("\nThroughput = %f\n", n/total_bt);
 }

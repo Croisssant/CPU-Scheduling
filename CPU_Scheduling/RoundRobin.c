@@ -79,5 +79,5 @@ void RR(int n, int bt[], int at[], int quantum)
     printf("Average waiting time = %.2f\n",(float)total_wt / (float)n); 
     printf("Average turn around time = %.2f\n",(float)total_tat / (float)n);
     float throughput = (float)n / (float)total_bt;
-    printf("Throughput = %f", throughput);
+    printf("Throughput = %f\n", throughput);
 } 

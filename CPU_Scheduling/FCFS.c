@@ -61,5 +61,5 @@ void FCFS(int processes[], int n, int bt[], int at[])
 	// don't change position of throughput
 	// throughtput = number of jobs / final complete time
 	float throughput = (float)n / (float)total_bt;
-	printf("Throughput = %f", throughput);
+	printf("Throughput = %f\n", throughput);
 } 
