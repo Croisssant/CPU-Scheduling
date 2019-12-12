@@ -53,10 +53,10 @@ void FCFS(int processes[], int n, int bt[], int at[])
 		printf("	 %d\n",tat[i]);	
 	} 
 
-	int s = (float)total_wt / (float)n; 
-	int t = (float)total_tat / (float)n; 
-	printf("Average waiting time = %d\n", s); 
-	printf("Average turn around time = %d\n", t);
+	float s = (float)total_wt / (float)n; 
+	float t = (float)total_tat / (float)n; 
+	printf("Average waiting time = %f\n", s); 
+	printf("Average turn around time = %f\n", t);
 
 	// don't change position of throughput
 	// throughtput = number of jobs / final complete time
