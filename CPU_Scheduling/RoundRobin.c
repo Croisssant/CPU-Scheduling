@@ -74,7 +74,7 @@ void RR(int n, int bt[], int at[], int quantum)
     total_bt += bt[i];
     total_wt = total_wt + wt[i]; 
     total_tat = total_tat + tat[i]; 
-		printf("P%d\t\t %d\t\t %d\t\t %d\t\t %d\n",i+1, bt[i], at[i], wt[i], tat[i]);
+		printf("P%d\t\t%d\t\t%d\t\t%d\t\t%d\n",i+1, bt[i], at[i], wt[i], tat[i]);
 	}
     printf("Average waiting time = %.2f\n",(float)total_wt / (float)n); 
     printf("Average turn around time = %.2f\n",(float)total_tat / (float)n);

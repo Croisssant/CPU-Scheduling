@@ -46,11 +46,11 @@ void FCFS(int processes[], int n, int bt[], int at[])
 		total_wt += wt[i]; 
 		total_tat += tat[i];
 		total_bt += bt[i]; 
-		printf(" %d\t",(i+1)); 
+		printf("%d\t",(i+1)); 
 		printf("	%d\t\t", bt[i]); 
 		printf("%d\t",at[i]);
 		printf("	%d\t",wt[i]);
-		printf("	 %d\n",tat[i]);	
+		printf("	%d\n",tat[i]);	
 	} 
 
 	float s = (float)total_wt / (float)n; 

@@ -13,25 +13,25 @@ int main()
 		int n = sizeof processes / sizeof processes[0]; 
 
 		// burst time of all processes 
-		int burstTime[] = {4,13,20,29,42};
+		int burstTime[5];
 		int burstTime1[] = {30, 20, 10, 5, 2};
 		int burstTime2[] = {4, 13, 20, 29, 42};
 
 		// arrival Time 
-		int arrivalTime[] = {0,0,0,0,0};
+		int arrivalTime[] = {0, 0, 0, 0, 0};
 		int arrivalTime1[] = {0, 0, 0, 0, 0};
 		int arrivalTime2[] = {0, 0, 0, 0, 0};
 
 		printf("\nChoose the workload you wish to proceed with:\n");
 		printf("1: First Workload\n");
-		printf("  Process \t Burst Time \t Arrival Time\n");
+		printf("   Process \t Burst Time \t Arrival Time\n");
 		for (int i=0; i<n; i++){
-			printf("  P%d\t\t    %d\t\t      %d\n", i+1, burstTime1[i], arrivalTime1[i]);
+			printf("   P%d\t\t %d\t\t %d\n", i+1, burstTime1[i], arrivalTime1[i]);
 		}
 		printf("2: Second Workload\n");
-		printf("  Process \t Burst Time \t Arrival Time\n");
+		printf("   Process \t Burst Time \t Arrival Time\n");
 		for (int i=0; i<n; i++){
-			printf("  P%d\t\t    %d\t\t      %d\n", i+1, burstTime2[i], arrivalTime2[i]);
+			printf("   P%d\t\t %d\t\t %d\n", i+1, burstTime2[i], arrivalTime2[i]);
 		}
 		printf("\n#: Press anything else to exit");
 		printf("\n>> ");
@@ -52,7 +52,6 @@ int main()
 			break;
 		}
 		
-	
 		int choice, timeQuantum;
 		printf("\n\nSelect the CPU Scheduling Algorithm you desire:\n");
 		printf("1: First Come First Serve\n");
@@ -61,7 +60,6 @@ int main()
 		printf("4: Exit\n");
 		printf(">> ");
 		scanf("%d", &choice);
-		
 		
 		switch (choice){
 			case 1:
