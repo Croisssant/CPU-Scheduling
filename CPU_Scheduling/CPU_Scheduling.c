@@ -5,51 +5,59 @@
 
 int main() 
 { 
-	// define number of processes
-	int processes[] = {1, 2, 3, 4, 5}; 
-	int n = sizeof processes / sizeof processes[0]; 
+	int x = 1;
+	while (x==1){
+		// define number of processes
+		int processes[] = {1, 2, 3, 4, 5}; 
+		int n = sizeof processes / sizeof processes[0]; 
 
-	// burst time of all processes 
-	int burstTime[] = {4,13,20,29,42};
-	// int burstTime1[] = {25, 2, 4, 6, 5};
-	// int burstTime2[] = {6, 8, 4, 10, 12};
+		// burst time of all processes 
+		int burstTime[] = {4,13,20,29,42};
+		// int burstTime1[] = {25, 2, 4, 6, 5};
+		// int burstTime2[] = {6, 8, 4, 10, 12};
 
-	// arrival Time 
-	int arrivalTime[] = {0,0,0,0,0};
-	// int arrivalTime1[] = {0, 2, 4, 6, 8};
-	// int arrivalTime2[] = {0, 0, 0, 0, 0};
-	
-	int choice, timeQuantum;
-	printf("Select the CPU Scheduling Algorithm you desire:\n");
-	printf("1: First Come First Serve\n");
-	printf("2: Round Robin\n");
-	printf("3: Multilevel Feedback Queue\n");
-	printf(">> ");
-	scanf("%d", &choice);
-	
-	
-	switch (choice){
-		case 1:
-			FCFS(processes, n, burstTime, arrivalTime); 
-			break;
+		// arrival Time 
+		int arrivalTime[] = {0,0,0,0,0};
+		// int arrivalTime1[] = {0, 2, 4, 6, 8};
+		// int arrivalTime2[] = {0, 0, 0, 0, 0};
 		
-		case 2:
-			printf("Please insert the Time Quantum\n");
-			printf(">> ");
-			scanf("%d", &timeQuantum);
-			RR(n, burstTime, arrivalTime,timeQuantum);
-			break;
+		int choice, timeQuantum;
+		printf("Select the CPU Scheduling Algorithm you desire:\n");
+		printf("1: First Come First Serve\n");
+		printf("2: Round Robin\n");
+		printf("3: Multilevel Feedback Queue\n");
+		printf("4: Exit\n");
+		printf(">> ");
+		scanf("%d", &choice);
 		
-		case 3:
-			printf("Please insert the Time Quantum\n");
-			printf(">> ");
-			scanf("%d", &timeQuantum);
-			MLFQ(arrivalTime, burstTime, n, timeQuantum);
-			break;
-
-		default:
-			printf("Something is wrong");
-			break;
+		
+		switch (choice){
+			case 1:
+				FCFS(processes, n, burstTime, arrivalTime); 
+				break;
+			
+			case 2:
+				printf("Please insert the Time Quantum\n");
+				printf(">> ");
+				scanf("%d", &timeQuantum);
+				RR(n, burstTime, arrivalTime,timeQuantum);
+				break;
+			
+			case 3:
+				printf("Please insert the Time Quantum\n");
+				printf(">> ");
+				scanf("%d", &timeQuantum);
+				MLFQ(arrivalTime, burstTime, n, timeQuantum);
+				break;
+			
+			case 4:
+				printf("Exiting now\n");
+				x = 0;
+			
+			default:
+				printf("Something is wrong");
+				break;
+		}
 	}
 	return 0; 
 } 
