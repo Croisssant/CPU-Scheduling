@@ -1,4 +1,5 @@
 #include<stdio.h> 
+#include <conio.h> 
 #include"FCFS.c"
 #include"RoundRobin.c"
 #include"MLFQ.c"
@@ -53,6 +54,7 @@ int main()
 		}
 		
 		int choice, timeQuantum;
+		char ch;
 		printf("\n\nSelect the CPU Scheduling Algorithm you desire:\n");
 		printf("1: First Come First Serve\n");
 		printf("2: Round Robin\n");
@@ -63,7 +65,9 @@ int main()
 		
 		switch (choice){
 			case 1:
-				FCFS(processes, n, burstTime, arrivalTime); 
+				FCFS(processes, n, burstTime, arrivalTime);
+				printf("\nPress ANYTHING to continue\n");
+				getch(); 
 				break;
 			
 			case 2:
@@ -71,6 +75,8 @@ int main()
 				printf(">> ");
 				scanf("%d", &timeQuantum);
 				RR(n, burstTime, arrivalTime,timeQuantum);
+				printf("\nPress ANYTHING to continue\n");
+				getch(); 
 				break;
 			
 			case 3:
@@ -78,6 +84,8 @@ int main()
 				printf(">> ");
 				scanf("%d", &timeQuantum);
 				MLFQ(arrivalTime, burstTime, n, timeQuantum);
+				printf("\nPress ANYTHING to continue\n");
+				getch(); 
 				break;
 			
 			case 4:
@@ -86,7 +94,7 @@ int main()
 				break;
 			
 			default:
-				printf("Select a proper");
+				printf("Select a proper choice");
 				break;
 		}
 	}
