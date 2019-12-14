@@ -15,8 +15,8 @@ int main()
 
 		// burst time of all processes 
 		int burstTime[5];
-		int burstTime1[] = {30, 20, 10, 5, 2};
-		int burstTime2[] = {4, 13, 20, 29, 42};
+		int burstTime1[] = {40, 8, 10, 16, 12};
+		int burstTime2[] = {10, 21, 15, 14, 12};
 
 		// arrival Time 
 		int arrivalTime[] = {0, 0, 0, 0, 0};
