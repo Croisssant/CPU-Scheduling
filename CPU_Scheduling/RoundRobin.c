@@ -1,6 +1,4 @@
 // Implementation for RoundRobin Scheduling
-
-#include<stdio.h> 
   
 // function to find the waiting time for all processes 
 void RR_WT(int n, int bt[], int wt[], int at[], int quantum) 
@@ -8,7 +6,7 @@ void RR_WT(int n, int bt[], int wt[], int at[], int quantum)
   int i,time, rem_bt[n], flag=0;
   int remain = n;
 
-    // make a copy of burst times bt[] to store remaining burst times. 
+  // make a copy of burst times bt[] to store remaining burst times
   for(i = 0; i < n; i++)
   {
     rem_bt[i] = bt[i];
@@ -45,7 +43,7 @@ void RR_WT(int n, int bt[], int wt[], int at[], int quantum)
 // function to calculate turn around time 
 void RR_TAT(int n, int bt[], int wt[], int tat[]) 
 { 
-    // calculating turnaround time by adding 
+    // calculate turnaround time by adding 
     // bt[i] + wt[i] 
     for (int i = 0; i < n ; i++) 
         tat[i] = bt[i] + wt[i]; 
@@ -76,8 +74,11 @@ void RR(int n, int bt[], int at[], int quantum)
     total_tat = total_tat + tat[i]; 
 		printf("P%d\t\t%d\t\t%d\t\t%d\t\t%d\n",i+1, bt[i], at[i], wt[i], tat[i]);
 	}
-    printf("Average waiting time = %.2f\n",(float)total_wt / (float)n); 
-    printf("Average turn around time = %.2f\n",(float)total_tat / (float)n);
-    float throughput = (float)n / (float)total_bt;
-    printf("Throughput = %f\n", throughput);
+
+  printf("Average waiting time = %.2f\n",(float)total_wt / (float)n); 
+  printf("Average turn around time = %.2f\n",(float)total_tat / (float)n);
+
+  // calculate throughput
+  float throughput = (float)n / (float)total_bt;
+  printf("Throughput = %f\n", throughput);
 } 

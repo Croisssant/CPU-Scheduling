@@ -17,7 +17,7 @@ void findWaitingTime(int processes[], int n, int bt[], int wt[], int at[])
 	}
 } 
 	
-// calculate turn around time 
+// calculate turn around time for all processes
 void findTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[]) 
 { 
 	// calculate turnaround time by adding 
@@ -58,7 +58,7 @@ void FCFS(int processes[], int n, int bt[], int at[])
 	printf("Average waiting time = %f\n", s); 
 	printf("Average turn around time = %f\n", t);
 
-	// don't change position of throughput
+	// calculate the throughput
 	// throughtput = number of jobs / final complete time
 	float throughput = (float)n / (float)total_bt;
 	printf("Throughput = %f\n", throughput);

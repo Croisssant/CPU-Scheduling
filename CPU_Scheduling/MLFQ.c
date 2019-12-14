@@ -1,7 +1,5 @@
 // Implementation for Multilevel Feedback Queue Scheduling
 
-#include<stdio.h>
-
 struct process
 {
     int name;
@@ -51,7 +49,7 @@ int MLFQ(int at[], int bt[], int n, int timeQuantum)
     sortByArrival();
     time = Q1[0].AT;
     printf("\nProcess in first queue following RR with Time Quantum = %d", timeQuantum);
-    printf("\nProcess\t\tBT\t\tWT\t\tTAT\t\t");
+    printf("\nProcess\t\tBurst time\tWaiting time\tTurn around time\t");
 
     // process for round robin queue
     for(i=0;i<n;i++)
@@ -83,7 +81,7 @@ int MLFQ(int at[], int bt[], int n, int timeQuantum)
     if(flag==1)
     {
         printf("\n\nProcess in second queue following FCFS ");
-        printf("\nProcess\t\tRT\t\tWT\t\tTAT\t\t");
+        printf("\nProcess\t\tBurst time\tWaiting time\tTurn around time\t");
     }
     
     // process for FCFS queue
