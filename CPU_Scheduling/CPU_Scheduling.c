@@ -1,5 +1,6 @@
 #include<stdio.h> 
 #include <conio.h> 
+#include <stdlib.h>
 #include"FCFS.c"
 #include"RoundRobin.c"
 #include"MLFQ.c"
@@ -10,45 +11,75 @@ int main()
 	while (x==1){
 		// define number of processes
 		int work_choice=0;
-		int processes[] = {1, 2, 3, 4, 5}; 
+		int *processes; 
 		int n = sizeof processes / sizeof processes[0]; 
 
 		// burst time of all processes 
-		int burstTime[n];
+		int *burstTime;
 		int burstTime1[] = {40, 8, 10, 16, 12};
 		int burstTime2[] = {10, 21, 15, 14, 12};
 
 		// arrival Time 
-		int arrivalTime[n];
-		int arrivalTime1[] = {0, 0, 0, 0, 0};
-		int arrivalTime2[] = {0, 0, 0, 0, 0};
+		int *customArrival;
+		int arrivalTime[] = {0, 0, 0, 0, 0};
+		
 
 		printf("\nChoose the workload you wish to proceed with:\n");
 		printf("1: First Workload\n");
 		printf("   Process \t Burst Time \t Arrival Time\n");
-		for (int i=0; i<n; i++){
-			printf("   P%d\t\t %d\t\t %d\n", i+1, burstTime1[i], arrivalTime1[i]);
+		for (int i=0; i<5; i++){
+			printf("   P%d\t\t %d\t\t %d\n", i+1, burstTime1[i], arrivalTime[i]);
 		}
 		printf("2: Second Workload\n");
 		printf("   Process \t Burst Time \t Arrival Time\n");
-		for (int i=0; i<n; i++){
-			printf("   P%d\t\t %d\t\t %d\n", i+1, burstTime2[i], arrivalTime2[i]);
+		for (int i=0; i<5; i++){
+			printf("   P%d\t\t %d\t\t %d\n", i+1, burstTime2[i], arrivalTime[i]);
 		}
+		printf("3: Custom Workload\n");
 		printf("\n#: Press anything else to exit");
 		printf("\n>> ");
 		scanf("%d", &work_choice);
 
 		if(work_choice==1){
+			n=5;
+			burstTime = malloc(n * sizeof(int));
+			processes = malloc(n * sizeof(int));
+			customArrival = arrivalTime;
 			for (int i=0; i<n; i++){
+				processes[i] = i+1;
 				burstTime[i] = burstTime1[i];
-				arrivalTime[i] = arrivalTime1[i];
 			}
 		}
 		else if(work_choice==2){
+			n=5;
+			burstTime = malloc(n * sizeof(int));
+			processes = malloc(n * sizeof(int));
+			customArrival = arrivalTime;
 			for (int i=0; i<n; i++){
+				processes[i] = i+1;
 				burstTime[i] = burstTime2[i];
-				arrivalTime[i] = arrivalTime2[i];
 			}
+		}
+		else if (work_choice == 3)
+		{
+			printf("Enter number of processes:");
+			printf("\n>> ");
+			scanf("%d",&n);
+			burstTime = malloc(n * sizeof(int));
+			processes = malloc(n * sizeof(int));
+			customArrival = malloc(n * sizeof(int));
+			for (int i=0; i<n; i++){
+				processes[i] = i+1;
+				printf("Process %d",i+1);
+				printf("\n---------------\n");
+				printf("Enter burst time of process:");
+				printf("\n>> ");
+				scanf("%d",&burstTime[i]);
+				printf("Enter arrival time of process:");
+				printf("\n>> ");
+				scanf("%d",&customArrival[i]);
+			}
+			
 		}
 		else{
 			x = 0;
@@ -67,7 +98,7 @@ int main()
 		
 		switch (choice){
 			case 1:
-				FCFS(processes, n, burstTime, arrivalTime);
+				FCFS(processes, n, burstTime, customArrival);
 				printf("\nPress ANYTHING to continue\n");
 				getch(); 
 				break;
@@ -76,7 +107,7 @@ int main()
 				printf("Please insert the Time Quantum\n");
 				printf(">> ");
 				scanf("%d", &timeQuantum);
-				RR(n, burstTime, arrivalTime,timeQuantum);
+				RR(n, burstTime, customArrival,timeQuantum);
 				printf("\nPress ANYTHING to continue\n");
 				getch(); 
 				break;
@@ -85,7 +116,7 @@ int main()
 				printf("Please insert the Time Quantum\n");
 				printf(">> ");
 				scanf("%d", &timeQuantum);
-				MLFQ(arrivalTime, burstTime, n, timeQuantum);
+				MLFQ(customArrival, burstTime, n, timeQuantum);
 				printf("\nPress ANYTHING to continue\n");
 				getch(); 
 				break;
