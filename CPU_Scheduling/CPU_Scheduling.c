@@ -14,12 +14,12 @@ int main()
 		int n = sizeof processes / sizeof processes[0]; 
 
 		// burst time of all processes 
-		int burstTime[5];
+		int burstTime[n];
 		int burstTime1[] = {40, 8, 10, 16, 12};
 		int burstTime2[] = {10, 21, 15, 14, 12};
 
 		// arrival Time 
-		int arrivalTime[] = {0, 0, 0, 0, 0};
+		int arrivalTime[n];
 		int arrivalTime1[] = {0, 0, 0, 0, 0};
 		int arrivalTime2[] = {0, 0, 0, 0, 0};
 
@@ -41,11 +41,13 @@ int main()
 		if(work_choice==1){
 			for (int i=0; i<n; i++){
 				burstTime[i] = burstTime1[i];
+				arrivalTime[i] = arrivalTime1[i];
 			}
 		}
 		else if(work_choice==2){
 			for (int i=0; i<n; i++){
 				burstTime[i] = burstTime2[i];
+				arrivalTime[i] = arrivalTime2[i];
 			}
 		}
 		else{

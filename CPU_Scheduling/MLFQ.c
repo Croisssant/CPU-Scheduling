@@ -1,5 +1,5 @@
 // Implementation for Multilevel Feedback Queue Scheduling
-
+// RT in this code refers to Remaining Time instead of Response Time
 struct process
 {
     int name;
@@ -103,6 +103,7 @@ int MLFQ(int at[], int bt[], int n, int timeQuantum)
         Q2[i].WT = Q2[i].TAT-Q2[i].BT-timeQuantum;
         total_wt += Q2[i].WT;
         total_tat += Q2[i].TAT;
+        //Note: BT here referes to the Remaining Burst Time for Queue 2 to process
         printf("\nP%d\t\t%d\t\t%d\t\t%d\t\t",Q2[i].name,Q2[i].BT,Q2[i].WT,Q2[i].TAT);
     }
 
